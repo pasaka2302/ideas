@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\IdeaController as AdminIdeaController;
-
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +83,10 @@ Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(
     Route::resource('users', AdminUserController::class)->only(['index']);
     Route::resource('ideas', AdminIdeaController::class)->only(['index']);
     Route::resource('comments', AdminCommentController::class)->only(['index', 'destroy']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get ('/messages', [MessageController::class, 'index'])->name('messages.index');       // Orodha za ujumbe
+    Route::get ('/users/{user}/message', [MessageController::class, 'show'])->name('messages.show');  // Ujumbe na mtumaji husika
+    Route::post('/users/{user}/message', [MessageController::class, 'store'])->name('messages.store');        // kutuma ujumbe
 });

@@ -15,7 +15,6 @@ class UserController extends Controller
     {
         $ideas = $user->ideas()->paginate(4);
           return view('users.shared.show', compact('user', 'ideas'));
-        // return view('users.shared.show2', compact('user', 'ideas'));
     }
 
     /**
@@ -27,7 +26,6 @@ class UserController extends Controller
         $edit = true;
         $ideas   = $user->ideas()->paginate(4);
         return view('users.edit', compact('user', 'edit', 'ideas'));
-        // return view('users.edit2', compact('user', 'edit', 'ideas'));
     }
 
     /**
@@ -42,7 +40,7 @@ class UserController extends Controller
             'bio' => 'nullable|min:5|max:250',
             'image' => 'image'
         ]);
-        
+            
         if(request()->has('image')){
             $imagePath          = request()->file('image')->store('profile', 'public');
             $validated['image'] = $imagePath;

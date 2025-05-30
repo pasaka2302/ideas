@@ -39,8 +39,8 @@
                         <label for="remember-me" class="text-dark"></label><br>
                         <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
                     </div>
-                    <div class="text-right mt-3">
-                        <a href="/login" class="text-dark">Login here</a>
+                    <div class="text-right mt-3 mb-3">
+                        Already registered? <a href="/login" class="text-dark">Login here</a>
                     </div>
                 </form>
             </div>
