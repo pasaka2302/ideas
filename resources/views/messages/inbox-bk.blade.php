@@ -42,39 +42,3 @@
     </div>
 @endsection
 
-
-
-{{-- inbox method --}}
-
-public function inbox()
-    {
-        $userId = Auth::id();
-        // group unread messages by sender
-        $conversations = Message::where('receiver_id', $userId)
-            ->where('is_read', false)
-            ->with('sender')
-            ->get()
-            ->groupBy('sender_id')
-            ->map(function ($message) {
-                return
-                    [
-                        'sender' => $message->first()->sender,
-                        'unread_count' => $message->count()
-                    ];
-            });
-
-        return view('messages.inbox', [
-            'conversations' => $conversations
-        ]);
-    }
-
-    $userId = Auth::id();
-
-    $messages = Message::with('sender', 'receiver')
-              ->where(function ($query) use ($userId){
-                $query->where('sender_id', $userId)
-                ->orWhere('receiver_id', $userId)
-              })
-              ->orderBy('created_at', 'DESC')
-              ->get();
-              
