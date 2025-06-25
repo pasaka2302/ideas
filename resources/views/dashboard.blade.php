@@ -3,7 +3,7 @@
 @section('content')
     <div class = "container py-4">
         <div class = "row">
-            @include('shared.success-msg')
+            {{-- @include('shared.success-msg') --}}
             <!-- Sidebar collapses into button on mobile -->
             <div class = "col-md-3 d-none d-md-block">
                 @include('shared.left-sidebar')

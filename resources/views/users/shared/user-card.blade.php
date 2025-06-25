@@ -2,7 +2,7 @@
     <div class = "px-3 pt-4 pb-2">
         <div class = "d-flex align-items-center justify-content-between">
             <div class = "d-flex align-items-center">
-                <img style = "width:150px; height:150px;" class = "me-3 avatar-sm rounded-circle"
+                <img style = "width:150px; height:150px; object-fit: cover;" class = "me-3 avatar-sm rounded-circle"
                     src   = "{{ $user->getImageUrl() }}" alt   = "{{ $user->name }} Avatar">
                 <div>
                     <h3 class="card-title mb-0">
@@ -41,13 +41,11 @@
                         @endif
 
                         {{-- DM Button --}}
-                        <a href="{{ route('messages.store', ['user' => $user->id]) }}" class="btn btn-primary btn-sm">
-                            Message
-                        </a>
-                        {{-- <form action="{{ route('messages.index', $user->id) }}" method="post" class="me-2">
-                            @csrf
-                            <button type="submit" class="btn btn-primary btn-sm">Message</button>
-                        </form> --}}
+                        @if (Auth::user()->isNot($user))
+                            <a href="{{ route('messages.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm">
+                                Message
+                            </a>
+                        @endif
                     </div>
                 @endif
             @endauth

@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    @include('shared.success-msg')
+                    {{-- @include('shared.success-msg') --}}
                     <div class="mt-3">
                         @include('users.shared.user-card')
 

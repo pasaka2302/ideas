@@ -86,7 +86,7 @@ Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get ('/messages', [MessageController::class, 'index'])->name('messages.index');       // Orodha za ujumbe
-    Route::get ('/users/{user}/message', [MessageController::class, 'show'])->name('messages.show');  // Ujumbe na mtumaji husika
-    Route::post('/users/{user}/message', [MessageController::class, 'store'])->name('messages.store');        // kutuma ujumbe
+    Route::get ('/users/{user}/messages', [MessageController::class, 'show'])->name('messages.show'); 
+    Route::post('/users/{user}/messages', [MessageController::class, 'store'])->name('messages.store'); 
+    Route::get('/messages', [MessageController::class, 'inbox'])->name('messages.inbox'); 
 });

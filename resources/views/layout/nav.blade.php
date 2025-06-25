@@ -30,6 +30,18 @@
                                 href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                         </li>
                     @endif
+                    @php
+                        $unread = Auth::user()->unreadMessagesCount();
+                    @endphp
+                    @if ($unread > 0)
+                        <li class="nav-item">
+                            <a class="{{ Route::is('messages.inbox') ? 'active' : '' }} nav-link" aria-current="page"
+                                href="{{ route('messages.inbox') }}" title="{{ $unread }} unread messages">
+                                <i class="fas fa-envelope"></i>
+                                <span class="badge bg-danger">{{ $unread }} </span>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="{{ Route::is('profile') ? 'active' : '' }} nav-link" aria-current="page"
                             href="{{ route('profile') }}">Hi, {{ Auth::user()->name }}</a>

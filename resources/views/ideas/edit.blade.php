@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="col-6">
-                @include('shared.success-msg')
+                {{-- @include('shared.success-msg') --}}
                 <div class="mt-3">
                      @include('shared.edit-form')
                 </div>

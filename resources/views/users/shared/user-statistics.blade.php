@@ -16,4 +16,12 @@
                         class ="fas fa-heart text-danger">
                     </span> {{ $user->likes()->count() }}
                 </a>
+                @php
+                    $unread = Auth::user()->unreadMessagesCount();
+                @endphp
+                <a href = "{{ route('messages.inbox') }}" title = "inbox" class = "fw-light nav-link fs-6 me-3">
+                    <i class ="fas fa-envelope"></i>
+                    <span class="badge bg-danger rounded" title="{{ $unread }} unread messages">{{ $unread }} </span>
+
+                </a>
             </div>

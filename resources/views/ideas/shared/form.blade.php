@@ -4,7 +4,7 @@
                     <form action="{{ route('ideas.store') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <textarea name="content" class="form-control" id="content" rows="3"></textarea>
+                            <textarea name="content" class="form-control" placeholder="Write your idea here..." autofocus id="content" rows="3"></textarea>
                         </div>
                         @error('content')
                             <span class="d-block fs-6 text-danger mb-3">{{ $message }}</span>

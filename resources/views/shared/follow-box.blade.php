@@ -5,7 +5,7 @@
                      @foreach ($topUsers as $user)
                         <div class="hstack gap-2 mb-3">
                             <div class="avatar">
-                                <a href="{{ route('users.show', $user->id) }}"><img style="width:45px; height:45px;" class="avatar-img rounded-circle"
+                                <a href="{{ route('users.show', $user->id) }}"><img style="width:45px; height:45px; object-fit: cover;" class="avatar-img rounded-circle"
                                         src="{{ $user->getImageUrl() }}" alt=""></a>
                             </div>
                             <div class="overflow-hidden">
